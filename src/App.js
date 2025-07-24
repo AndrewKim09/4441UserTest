@@ -16,6 +16,8 @@ const App = () => {
   const [menuPlacements, setMenuPlacements] = useState(['top', 'left', 'right']);
   const [taskType, setTaskType] = useState(null);
   const [showAlert, setShowAlert] = useState(true);
+
+  const numberOfTasks = 3; // Number of tasks per menu placement
   
 
   const [testFinished, setTestFinished] = useState(false);
@@ -410,7 +412,7 @@ const findingTasks = [
 
     for (const { source, data } of arraysWithLabels) {
       // Get 1 random entry from the array
-      const randomTasks = getRandomItems(data, 3);
+      const randomTasks = getRandomItems(data, numberOfTasks);
 
       for (const task of randomTasks) {
         result.push({
@@ -835,9 +837,9 @@ const findingTasks = [
             <p>Top Placement Errors: {topPlacementErrors}</p>
             <p>Left Placement Errors: {leftPlacementErrors}</p>
             <p>Right Placement Errors: {rightPlacementErrors}</p>
-            <p>Top Placement Average Completion Time: {(topPlacementCompletionTime / 1000).toFixed(2)} seconds</p>
-            <p>Left Placement Average Completion Time: {(leftPlacementCompletionTime / 1000).toFixed(2)} seconds</p>
-            <p>Right Placement Average Completion Time: {(rightPlacementCompletionTime / 1000).toFixed(2)} seconds</p>
+            <p>Top Placement Average Completion Time: {(topPlacementCompletionTime / 1000 / (numberOfTasks * 2)).toFixed(2)} seconds</p>
+            <p>Left Placement Average Completion Time: {(leftPlacementCompletionTime / 1000 / (numberOfTasks * 2)).toFixed(2)} seconds</p>
+            <p>Right Placement Average Completion Time: {(rightPlacementCompletionTime / 1000 / (numberOfTasks * 2)).toFixed(2)} seconds</p>
           </div>
         </div>
     );
